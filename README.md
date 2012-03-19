@@ -21,9 +21,9 @@ Skrypt zapisuje dane w bazie MongoDB:
 **POLECENIE:** 
 Napisać skrypt przenoszący dane pomiędzy dwoma bazami dokumentowymi.
 
-Skrypt eksportuje dane: MongoDB -> CouchDB: 
+Skrypt eksportuje dane: MongoDB -> CouchDB. 
 
-+ [mongodb_to_couchdb.sh](https://github.com/cintrzyk/nosql/blob/master/mongodb_to_couchdb.sh)
++ [mongodb_to_couchdb.sh](https://github.com/cintrzyk/nosql/blob/master/mongodb_to_couchdb.sh) -- 'script.rb'
 
 
 
