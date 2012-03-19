@@ -23,7 +23,7 @@ Napisać skrypt przenoszący dane pomiędzy dwoma bazami dokumentowymi.
 
 Skrypt eksportuje dane: MongoDB -> CouchDB: 
 
-+ [to_mongodb.sh](https://github.com/cintrzyk/nosql/blob/master/mongodb_to_couchdb.sh)
++ [mongodb_to_couchdb.sh](https://github.com/cintrzyk/nosql/blob/master/mongodb_to_couchdb.sh)
 
 
 
