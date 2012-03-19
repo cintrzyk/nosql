@@ -1,5 +1,5 @@
 Technologie NoSQL
-=============
+=================
 
 Repozytorium ze wszystkimi zadaniami na potrzeby laboratorium "Technologie NoSQL".
 
