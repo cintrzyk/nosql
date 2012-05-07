@@ -9,7 +9,7 @@ Kontakty sa w postaci znaczników widocznych po kliknięciu w przycisk "Pokaż k
 Wizualizacja danych odbywa się za pomoca Google Maps API.
 Dane zaś zostały obrobione dzięki MapReduce. 
 
-== Funkcja map
+=== Funkcja map
 
   def map
     friends = Friend.all
@@ -23,7 +23,28 @@ Dane zaś zostały obrobione dzięki MapReduce.
         end
       end
     end
-	return result
+    return result
+  end
+  
+=== Funkcja reduce
+
+  def reduce(data)
+    result = {}
+    add = false
+    data.each do |key,value|
+      add = false
+      result.each do |key_r, value_r|
+        if ((value_r['lat'] - value['lat'] < 0.07) and (value_r['lat'] - value['lat'] > -0.07) )  and ( (value_r['lng'] - value['lng'] < 0.07) and (value_r['lng'] - value['lng'] > -0.07) )
+          value_r['population'] += value['population']
+          add = true
+          break
+        end
+      end
+      if !add
+        result[key] = value
+      end
+    end
+    return result
   end
 
 
