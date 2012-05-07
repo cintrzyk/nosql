@@ -10,6 +10,8 @@ Wizualizacja danych odbywa się za pomoca Google Maps API.
 Dane zaś zostały obrobione dzięki MapReduce. 
 
 === Funkcja map
+Zlicza wystapienia miejscowości i sprowadza do postaci.
+przykład: Gdynia = { lan=>23.432, lng=>123.123, populacja=>4 }
 
   def map
     friends = Friend.all
@@ -27,6 +29,7 @@ Dane zaś zostały obrobione dzięki MapReduce.
   end
   
 === Funkcja reduce
+Zlicza wystapienia miejscowości w podanym promieniu oraz dodaje populacje.
 
   def reduce(data)
     result = {}
