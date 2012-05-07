@@ -26,6 +26,14 @@ Skrypt eksportuje dane: MongoDB -> CouchDB.
 + [mongodb_to_couchdb.sh](https://github.com/cintrzyk/nosql/blob/master/mongodb_to_couchdb.sh) - korzysta ze skryptu [script.rb](https://github.com/cintrzyk/nosql/blob/master/script.rb)
 
 
+Zadanie 2
+---------
+
+**POLECENIE:** 
+Przygotować aplikację korzystającą z obliczeń MapReduce.
+
++ [friends_googlemap](https://github.com/cintrzyk/nosql/tree/master/friends_googlemap)
+
 
 
 
