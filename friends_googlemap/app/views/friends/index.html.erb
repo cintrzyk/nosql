@@ -1,0 +1,116 @@
+<div class="row">
+  <div class="span5">
+    <h1>Lista kontaktów</h1>
+    <table class="table table-striped">
+      <tbody>
+          <% @friends.each do |friend| %>
+              <tr>
+                <td><img src='https://graph.facebook.com/<%= friend.facebook_id %>/picture' alt='foto'></td>
+                <td>
+                  <%= link_to (friend_path(friend))  do %>
+                      <%= friend.name+" "+friend.lastname %>
+                  <% end %>
+                </td>
+                <td><a href='http://facebook.com/<%= friend.facebook_id %>'><%= image_tag("facebook.png", :border=>0) %></a></td>
+              </tr>
+          <% end %>
+          <tr>
+            <%= paginate @friends %>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span7">
+    <h1>Mapka</h1>
+    <div id="map_canvas" style="width: 550px; height: 600px;">ładowanie mapy...</div>
+    <button id="show_friends" class="btn btn-primary btn-large" onclick="drop()" style="margin-top: 10px">Pokaż znajomych na mapie</button>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var berlin = new google.maps.LatLng(52.520816, 13.410186);
+
+    var neighborhoods = [
+        <% @friends_map.each do |place| %>
+            <% if place.latitude %>
+                new google.maps.LatLng(<%= place.latitude %>, <%= place.longitude %>),
+            <% end %>
+        <% end %>
+    ];
+
+    var tytuly = [
+        <% @friends_map.each do |person| %>
+            <% if person.latitude %>
+                "<%= person.name %> <%= person.lastname %>",
+            <% end %>
+        <% end %>
+    ];
+
+
+    var markers = [];
+    var iterator = 0;
+    var image = '<%= path_to_image "rails.png" %>';
+    var map;
+
+    function initialize() {
+        var mapOptions = {
+            zoom: 4,
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            center: berlin
+        };
+
+        map = new google.maps.Map(document.getElementById("map_canvas"),
+                mapOptions);
+
+        var cityCircle;
+
+        for (var city in citymap) {
+            // Construct the circle for each value in citymap. We scale population by 20.
+            var populationOptions = {
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35,
+                map: map,
+                center: citymap[city].center,
+                radius: citymap[city].population * 400 //scale population
+            };
+            cityCircle = new google.maps.Circle(populationOptions);
+        }
+
+
+    }
+
+    function drop() {
+        for (var i = 0; i < neighborhoods.length; i++) {
+            setTimeout(function() {
+                addMarker();
+            }, i * 200);
+        }
+        $('#show_friends').addClass('disabled');
+    }
+
+    function addMarker() {
+        markers.push(new google.maps.Marker({
+            position: neighborhoods[iterator],
+            map: map,
+            title: tytuly[iterator],
+            draggable: false,
+            animation: google.maps.Animation.DROP
+
+        }));
+        iterator++;
+    }
+
+    // Create an object containing LatLng, population.
+    var citymap = {};
+
+    <% @map_reduce.each do |key,value| %>
+    citymap['<%= key %>'] = {
+        center: new google.maps.LatLng(<%= value['lat'] %>, <%= value['lng'] %>),
+        population: <%= value['population'] %>
+    };
+    <% end %>
+
+</script>

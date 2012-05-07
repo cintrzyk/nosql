@@ -1,0 +1,5 @@
+<% if page.current? %>
+    <td><span class="btn btn-info btn-small disabled"><%= page %></span></td>
+<% else %>
+    <td><%= link_to raw(%Q[<span class="btn btn-small">#{page}</span>]), url %></td>
+<% end %>
