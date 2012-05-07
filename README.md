@@ -11,6 +11,8 @@ Znaleźć ciekawe dane, które można poddać agregacji:
 
 + [facebook_friends.json](https://github.com/cintrzyk/nosql/blob/master/facebook_friends.json)
 
+Dane zostały pobrane za pomoca Graph API ze strony facebook.com. Następnie zostały obrobione przy pomocy narzędzia Google Refine. Usunięto zbędne dane, dodano nowe dane: fetch URL -> Google Refine -> Graph API.
+
 **POLECENIE:** 
 Napisać skrypt zapisujący dane w wybranej bazie dokumentowej.
 
