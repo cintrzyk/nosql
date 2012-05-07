@@ -2,27 +2,27 @@
 
 Aplikacja przedstawia kontakty pobrane z facebook'a na mapie Google oraz w postaci profili.
 
-= Mapa
+=== Mapa
 Kontakty sa w postaci znaczników widocznych po kliknięciu w przycisk "Pokaż kontakty" jak i w postaci kół, które odzwierciedlaja zagęszczenie w promieniu około 17km.  
 
-= Wizualizacja
+=== Wizualizacja
 Wizualizacja danych odbywa się za pomoca Google Maps API.
 Dane zaś zostały obrobione dzięki MapReduce. 
 
 == Funkcja map
 
   def map
-	friends = Friend.all
-	result = {}
-	friends.each do |friend|
-	  if friend.latitude
-	    if result[friend.location]
-	      result[friend.location]['population'] += 1
-	    else
-	      result[friend.location] = { 'lat'=>friend.latitude.to_f, 'lng'=>friend.longitude.to_f, 'population'=>1 }
-	    end
-	  end
-	end
+    friends = Friend.all
+    result = {}
+    friends.each do |friend|
+      if friend.latitude
+        if result[friend.location]
+          result[friend.location]['population'] += 1
+        else
+          result[friend.location] = { 'lat'=>friend.latitude.to_f, 'lng'=>friend.longitude.to_f, 'population'=>1 }
+        end
+      end
+    end
 	return result
   end
 
