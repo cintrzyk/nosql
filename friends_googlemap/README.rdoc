@@ -15,7 +15,7 @@ Zlicza wystapienia miejscowości i sprowadza do postaci.
 przykład:
   'Gdynia' = { 'lat'=>23.432, 'lng'=>123.123, 'population'=>4 }
 
-
+kod:
   def map
     friends = Friend.all
     result = {}
@@ -33,7 +33,7 @@ przykład:
   
 === Funkcja reduce
 Zlicza wystapienia miejscowości w podanym promieniu oraz dodaje populacje.
-
+kod:
   def reduce(data)
     result = {}
     add = false
