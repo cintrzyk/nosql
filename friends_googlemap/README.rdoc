@@ -1,6 +1,7 @@
 == O aplikacji
 
 Aplikacja przedstawia kontakty pobrane z facebook'a na mapie Google oraz w postaci profili.
+Rails 3.2 + MongoDB z wykorzystaniem Google Maps API, Graph API, Google Refine. 
 
 === Mapa
 Kontakty sa w postaci znaczników widocznych po kliknięciu w przycisk "Pokaż kontakty" jak i w postaci kół, które odzwierciedlaja zagęszczenie w promieniu około 17km.  
